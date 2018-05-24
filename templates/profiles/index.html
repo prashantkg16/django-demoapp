@@ -1,0 +1,50 @@
+{% extends 'home.html' %}
+{% load helpers %}
+{% block head_js %}
+<script type="text/javascript">
+function delrouter(rId) {
+	alert(rId);
+	if (confirm('Are you sure you want to delete this entry?')) {
+		$.ajax({			
+			url: "/devices/deleterouter/"+rId,
+			data:"",			
+			success: function(data){
+				console.log( data);
+				$('#datadiv').html(data);
+			}
+		});
+	}
+}
+
+</script>
+{% endblock head_js %}
+{% block content %}	
+<div class="container">				
+	<div class="row">
+		<div class="col-md-12">				
+			<div class="login-panel panel panel-default">	
+				<div class="panel-heading">
+					<h3 class="panel-title">Devices List(Router) {% currency_converter "120"  %}</h3>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="row lead">
+		<div class="col-md-11">&nbsp;</div><div class="col-md-1"><a href="/devices/addrouter" class="btn btn-lg btn-primary">Add</a></div>		
+	</div>
+	<div class="row table-bordered lead">
+		<div class="col-md-3">Hostname</div><div class="col-md-3">Sapid</div><div class="col-md-3">loopback</div><div class="col-md-3">&nbsp;</div>	
+	</div>
+	<div id="datadiv">		
+		{% for iter_value in routerls.values %}
+		<div class="row table-bordered ">
+			<div class="col-md-3">{{ iter_value.hostname }}</div>
+			<div class="col-md-3">{{ iter_value.sapid }}</div>
+			<div class="col-md-3">{{ iter_value.loopback }}</div>
+			<div class="col-md-3"><a href="/devices/editrouter/{{ iter_value.id }}" >Edit</a> | <a href="#" onclick="delrouter({{ iter_value.id }});" >Delete</a></div>	
+		</div>
+		{% endfor %}
+	</div>
+	
+</div>	
+{% endblock content %} 

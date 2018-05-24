@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Infinity{% endblock title %}</title>
+	{% block head_favicon %}{% endblock head_favicon %}
+	{% block head_meta %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+	{% endblock head_meta %}
+
+	{% block head_css %}
+		{% block head_css_site %}
+			<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		{% endblock head_css_site %}		
+		
+		{% block head_css_page %}{% endblock head_css_page %}
+	{% endblock head_css %}
+		<script src="/static/jquery/jquery.min.js"></script>
+	{% block head_js %}{% endblock head_js %}
+</head>
+<body>
+	{% block content %}	
+    <div class="container">				
+        <div class="row">
+            <div class="col-md-12">				
+                <div class="panel panel-default">	
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Welcome to Infinity Lab</h3>
+                    </div> 
+					<div class="panel-body">Manage Device: <a href="/devices/index">Click Here</a></div>
+                </div>				
+            </div>
+        </div>
+    </div>
+	{% endblock content %} 
+</body>
+</html>
