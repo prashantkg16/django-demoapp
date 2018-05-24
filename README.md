@@ -1,1 +1,2 @@
 "# django-demoapp" 
+"Registration Page"
